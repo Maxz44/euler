@@ -99,4 +99,48 @@ def euler4(n):
     rslt = [x for x in rslt if nb_is_palindrom(x)]
     return max(rslt)
 
-print(euler4(3))
+# print(euler4(3))
+
+
+# --- Euler pb 5
+
+# Smallest multiple
+
+# 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+# What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+def is_divisible_range(n, start, end):
+    rslt = True
+    for i in range(start, end+1):
+        rslt = rslt and n % i == 0
+    return rslt
+
+
+def euler5(start, end):
+    found = False
+    i = end + 1
+    while not found:
+        i += 1
+        found = is_divisible_range(i, start, end)
+    return i
+
+# print(euler5(1, 20))
+
+# --- Euler 6
+
+# Sum square difference
+
+# The sum of the squares of the first ten natural numbers is,
+#   1**2 + 2**2 + ... + 10**2 = 385
+# The square of the sum of the first ten natural numbers is,
+#   (1 + 2 + ... + 10)**2 = 55**2 = 3025
+# Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is
+#   3025 - 385 = 2640
+# Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+
+def euler6(n):
+    a = sum([x**2 for x in range(1, n+1)])
+    b = sum(range(1, n+1))**2
+    return b - a
+
+# print(euler6(100))
