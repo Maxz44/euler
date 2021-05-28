@@ -62,12 +62,12 @@ def euler2(n):
 
 
 def isprime(n):
-    hasfactor = False
+    hasfactor = n % 2 == 0
     i = 2
     from math import sqrt
-    while not hasfactor and i < int(sqrt(n)):
-        hasfactor = n % i == 0
+    while not hasfactor and i <= int(sqrt(n)):
         i += 1
+        hasfactor = n % i == 0
     return not hasfactor
 
 
@@ -144,3 +144,21 @@ def euler6(n):
     return b - a
 
 # print(euler6(100))
+
+# --- Euler 7
+
+# By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+# What is the 10 001st prime number?
+
+def euler7(n):
+    # nb to test as prime
+    x = 2
+    # nb of prime nb found
+    prime_n = 1
+    while prime_n < n:
+        x += 1
+        if isprime(x):
+            prime_n += 1
+    return x
+
+# print(euler7(10_001))
